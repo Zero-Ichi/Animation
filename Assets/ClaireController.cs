@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClaireController : MonoBehaviour {
+public class ClaireController : MonoBehaviour
+{
 
     [SerializeField]
     private float walkSpeed = 2;
-	
+
     private float axisH;
     private float axisV;
     private Animator animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         axisH = Input.GetAxis("Horizontal");
         axisV = Input.GetAxis("Vertical");
 
@@ -25,7 +27,7 @@ public class ClaireController : MonoBehaviour {
             animator.SetBool("Walking", true);
             transform.Translate(Vector3.forward * walkSpeed * axisV * Time.deltaTime);
         }
-        if (axisV == 0)
+        else if (axisV == 0)
         {
             animator.SetBool("Walking", false);
         }
